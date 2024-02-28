@@ -1,0 +1,22 @@
+1708328057190	Rename package 'webprj'
+1708330474384	Move 'index.jsp' to 'view'
+1708332859022	Move 'notice' to 'member'
+1708332957298	Move 3 resources to 'webapp'
+1708495135356	Move 3 resources to 'html'
+1708495247418	Rename resource 'html'
+1708567930545	Move 'notice' to 'static'
+1708570074204	Move 'notice' to 'customer'
+1708570379385	Copy file
+1708570386250	Rename resource 'list.jsp'
+1708582763201	Copy file
+1708582775352	Rename resource 'index.jsp'
+1708582786075	Rename resource 'layput.jsp'
+1708676884323	Move compilation unit
+1708676900984	Rename type 'NoticeService'
+1708687016928	Copy file
+1708687053289	Copy file
+1708687055776	Copy file
+1708687096614	Rename resource 'dispatcher-servlet.xml'
+1708687112945	Rename resource 'dispatcher-servlet2.xml'
+1708687131100	Rename resource 'dispatcher-servlet3.xml'
+1708687433700	Rename resource 'dispatcher-servlet.xml'

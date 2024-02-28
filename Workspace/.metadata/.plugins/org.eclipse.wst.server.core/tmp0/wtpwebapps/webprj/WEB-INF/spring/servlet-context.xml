@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        ">
+    <!-- annotation으로 DI하기 위한 설정 & 위의 context 부분도 추가 필요함 -->
+    <!-- <context:annotation-config />  -->
+    <!-- base-package 안의 @Component을 DI 함(IOC Container에 담음). 
+         context:annotation-config을 설정 안해도 됨. 해당 기능이 포함되어 있음. -->
+    <context:component-scan base-package="com.newlecture.web.controller" />
+    
+    <!-- index -->    
+    <!-- 
+    <bean id="/index" class="com.newlecture.web.controller.IndexController" />
+    -->  
+    
+    <!-- notice -->
+    <!--  
+    <bean id="/notice/list" class="com.newlecture.web.controller.notice.ListController">
+    	<property name="noticeService" ref="noticeService" /> 
+    	name="noticeService"는 ListController의 setNoticeService을 의미함
+    </bean>
+    -->
+    <!--  
+    <bean id="/notice/detail" class="com.newlecture.web.controller.notice.DetailController"/>
+    -->
+
+
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/tiles.xml" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
+	</bean>
+	
+	<mvc:resources location="/static/" mapping="/**" />
+	
+	<!-- Controller에서 annotation을 이용해서 url 매핑을 하기 위해 필요함 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters> <!-- @ResponseBody로 String 처리할때 한글처리 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	        
+</beans>
